@@ -1,0 +1,267 @@
+<include file="public/header"/>
+<style type="text/css">
+	ul li {
+		list-style: none;
+	}
+	.package-status {
+		padding: 18px 0 0 0
+	}
+	.package-status .status-list {
+		margin: 0;
+		padding: 0;
+		margin-top: -5px;
+		padding-left: 8px;
+		list-style: none;
+	}
+	.package-status .status-list>li {
+		border-left: 2px solid #0278D8;
+		text-align: left;
+	}
+	.package-status .status-list>li:before {
+		/* 流程点的样式 */
+		content: '';
+		border: 3px solid #0278D8;
+		background-color: #0278D8;
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+		border-radius: 10px;
+		margin-left: -7px;
+		margin-right: 10px
+	}
+	.package-status .status-box {
+		overflow: hidden
+	}
+	.package-status .status-list>li {
+		height: auto;
+		width: 95%;
+	}
+	.package-status .status-list {
+		margin-top: -8px
+	}
+	.package-status .status-box {
+		position: relative
+	}
+	.package-status .status-box:before {
+		content: " ";
+		background-color: #f3f3f3;
+		display: block;
+		position: absolute;
+		top: -8px;
+		left: 20px;
+		width: 10px;
+		height: 4px
+	}
+	.package-status .status-list {
+		margin-top: 0px;
+	}
+	.status-list>li:not(:first-child) {
+		padding-top: 10px;
+	}
+	.status-content-before {
+		text-align: left;
+		margin-left: 25px;
+		margin-top: -20px;
+	}
+	.status-content-latest {
+		text-align: left;
+		margin-left: 25px;
+		color: #0278D8;
+		margin-top: -20px;
+	}
+	.status-time-before {
+		text-align: left;
+		margin-left: 25px;
+		font-size: 10px;
+		margin-top: 5px;
+	}
+	.status-time-latest {
+		text-align: left;
+		margin-left: 25px;
+		color: #0278D8;
+		font-size: 10px;
+		margin-top: 5px;
+	}
+	.status-line {
+		border-bottom: 1px solid #ccc;
+		margin-left: 25px;
+		margin-top: 10px;
+	}
+	.list {
+		padding: 0 20px;
+		background-color: #F8F8F8;
+		margin: 10px 0 0 25px;
+		border: 1px solid #EBEBEB;
+	}
+	.list li {
+		line-height: 30px;
+		color: #616161;
+	}
+</style>
+<body>
+<header>
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="{:U('User/order_list')}" title="返回"></a></div>
+    <div class="h-mid">订单物流详情</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</header>
+<include file="public/menu"/>
+<div id="tbh5v0">						
+	<div class="order">
+	
+		<div class="detail_top">
+			<!--<div class="lan">
+				<dl>
+				<dt class="dingdan_1"></dt>
+
+
+				<dd><span>平台订单状态：&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;{$order_info.order_status_desc}
+
+				</span><br>
+				    <span class="dingdanhao">订单号&nbsp;:&nbsp;{$order_info.order_sn}</span><br>
+				   &lt;!&ndash; <span>配送费用&nbsp;:￥{$order_info.shipping_price}元</span>&ndash;&gt;
+				</dd>
+				</dl>
+			</div>-->
+			<div class="lan">
+				<dl>
+				<dt class="dingdan_1"></dt>
+
+
+				<dd><span>跑腿订单状态：&nbsp;&nbsp;&nbsp;&nbsp;
+					<if condition="$state eq -1">
+						订单取消
+						<elseif condition="state eq 1" >下单成功   </elseif>
+						<elseif condition="state eq 3" >跑男抢单   </elseif>
+						<elseif condition="state eq 4" >已到达   </elseif>
+						<elseif condition="state eq 5" >已取件   </elseif>
+						<elseif condition="state eq 6" >到达目的地   </elseif>
+						<elseif condition="state eq 10" >收件人已收货   </elseif>
+					</if>
+
+				</span><br>
+				    <span class="dingdanhao">订单号&nbsp;:&nbsp;{$order_info.order_sn}</span><br>
+				   <!-- <span>配送费用&nbsp;:￥{$order_info.shipping_price}元</span>-->
+				</dd>
+				</dl>
+			</div>
+
+<!--			<dl style="border-bottom:1px solid #eeeeee">
+			<dt style=" position:absolute;" class="dingdan_2"></dt>
+			<dd style=" margin-left:30px;"><span class="zhif">所选支付方式&nbsp;:&nbsp;{$order_info.pay_name}</span>
+				<span class="zhif">应付款金额&nbsp;:&nbsp;￥{$order_info.total_fee}元</span>			 			 
+                <if condition="$order_info.pay_btn eq 1">
+	                <a href="{:U('Mobile/Cart/cart4',array('order_id'=>$order_info['order_id']))}" class="zhifu" style=" color:#fff; font-size:16px;">去支付</a>
+                </if>
+			</dd>
+			</dl>-->
+
+
+			<dl style="border-top:1px solid #eeeeee; margin-top:10px; height:70px; padding-bottom:0px;overflow: visible;">
+
+			<dd>
+
+				<div class="package-status">
+					<div class="status-box">
+						<ul class="status-list">
+							<li>
+								<div class="status-content-before">客户下单</div>
+								<div class="status-time-before">收货人:&nbsp;{$order_info.consignee}<em>{$order_info.mobile}</em></div>
+								<div class="status-time-before">收货地址:&nbsp;{$regionLits[$order_info['province']]},{$regionLits[$order_info['city']]},{$regionLits[$order_info['district']]},{$order_info.address}</div>
+								<div class="status-time-before">下单时间:&nbsp; {$order_info.pay_time |date='Y-m-d H:i',###}</div>
+								<div class="status-line"></div>
+							</li>
+							<li>
+								<div class="status-content-before">商家确认订单</div>
+								<div class="status-time-before">商家名称:&nbsp;{$store['store_name']}</div>
+								<div class="status-time-before">商家地址:&nbsp;{$regionLits[$apply['company_province']]},{$regionLits[$apply['company_city']]},{$regionLits[$apply['company_district']]},{$company_address}<em></em></div>
+								<div class="status-time-before">确认时间:&nbsp;{$order_info.confirm_seller_time |date='Y-m-d H:i',###}</div>
+								<div class="status-line"></div>
+							</li>
+							<li>
+								<div class="status-content-before">商家发货</div>
+								<div class="status-time-before">配送方式&nbsp;:&nbsp;{$order_info.shipping_name}</div>
+								<div class="status-time-before">快递单号:&nbsp;{$order_info.invoice_no} </div>
+								<div class="status-time-before" style="display:none;">发货地:&nbsp;{$regionLits[$apply['company_province']]},{$regionLits[$apply['company_city']]},{$regionLits[$apply['company_district']]},{$company_address}<em></em></div>
+								<div class="status-time-before">发货时间:&nbsp;{$order_info.shipping_time |date='Y-m-d H:i',###} </div>
+								<div class="status-line"></div>
+							</li>
+
+						<!--	<if condition="$state eq -1">
+								订单取消
+								<elseif condition="state eq 1" >下单成功   </elseif>
+								<elseif condition="state eq 3" >跑男抢单   </elseif>
+								<elseif condition="state eq 4" >已到达   </elseif>
+								<elseif condition="state eq 5" >已取件   </elseif>
+								<elseif condition="state eq 6" >到达目的地   </elseif>
+								<elseif condition="state eq 10" >收件人已收货   </elseif>
+							</if>
+-->
+							<if condition="$state egt 5">
+								<li>
+									<div class="status-content-before">快递已取件</div>
+									<div class="status-time-before">快递单号:&nbsp;&nbsp;{$order_info.invoice_no} </div>
+									<div class="status-time-before">跑男姓名:&nbsp;&nbsp;{$driver_name}</div>
+									<div class="status-time-before">跑男工号:&nbsp;&nbsp;{$driver_jobnum}</div>
+									<div class="status-time-before">跑男手机:&nbsp;&nbsp;{$driver_mobile}</div>
+									<div class="status-time-before">预计到达:&nbsp;&nbsp;{$expectedarrive_time}</div>
+
+									<div class="status-line"></div>
+								</li>
+							</if>
+							<if condition="$state egt 6">
+								<li>
+									<div class="status-content-before">快递已到达目的地</div>
+									<div class="status-time-before">快递单号:&nbsp;&nbsp;{$order_info.invoice_no} </div>
+									<div class="status-line"></div>
+								</li>
+							</if>
+							<if condition="$state egt 10">
+								<li>
+									<div class="status-content-before">已收货</div>
+									<div class="status-time-before">完成时间:&nbsp;&nbsp;{$finish_time} </div>
+									<div class="status-line"></div>
+								</li>
+							</if>
+							<if condition="$state eq -1">
+								<li>
+									<div class="status-content-before">跑腿订单取消</div>
+									<div class="status-time-before">取消原因:&nbsp;【UU跑腿】亲爱的用户您好，由于超过120分钟没有跑男接单，您的订单已取消。给您造成的不便表示深深的歉意 </div>
+									<div class="status-time-before">备注:&nbsp;如果是第三方物流原因导致订单被取消，请及时联系商家协调。 </div>
+									<div class="status-line"></div>
+								</li>
+							</if>
+
+						</ul>
+					</div>
+				</div>
+
+			</dd>
+			</dl>
+
+		</div>
+
+			<!--	<section class="qita">
+					<div class="navContent">
+					<ul>
+						<li class="first">配送方式&nbsp;:&nbsp;{$order_info.shipping_name}</li>
+						<li>支付方式&nbsp;:&nbsp;{$order_info.pay_name}</li>
+					</ul>
+					</div>
+				</section>-->
+		
+		<div style=" height:50px;"></div> 
+		
+
+	</div>		
+</div>
+</body>
+</html>

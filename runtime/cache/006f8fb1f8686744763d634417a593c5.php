@@ -1,0 +1,3 @@
+<?php
+//000031104000a:4:{i:0;a:6:{s:2:"id";i:13;s:4:"name";s:12:"限时抢购";s:7:"is_show";i:1;s:6:"is_new";i:1;s:4:"sort";i:10;s:3:"url";s:42:"/index.php?m=Home&c=Activity&a=promoteList";}i:1;a:6:{s:2:"id";i:4;s:4:"name";s:12:"促销活动";s:7:"is_show";i:1;s:6:"is_new";i:1;s:4:"sort";i:5;s:3:"url";s:42:"/index.php?m=Home&c=activity&a=promoteList";}i:2;a:6:{s:2:"id";i:5;s:4:"name";s:12:"团购精品";s:7:"is_show";i:1;s:6:"is_new";i:1;s:4:"sort";i:4;s:3:"url";s:41:"/index.php?m=Home&c=Activity&a=group_list";}i:3;a:6:{s:2:"id";i:16;s:4:"name";s:28:"手机 、 数码 、 通信";s:7:"is_show";i:1;s:6:"is_new";i:1;s:4:"sort";i:0;s:3:"url";s:41:"/index.php/Home/Goods/goodsList/id/1.html";}}
+?>
